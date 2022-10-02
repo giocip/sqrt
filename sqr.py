@@ -44,7 +44,7 @@ def sqr(n, d = 3):
             sqr(0.0, 32)        ValueError: 'float', type not valid: 0.0
             sqr('+625.0', 32)   ValueError: Floating number format not valid: +625.0
     '''                                       
-    d = abs(d)
+    d = abs(int(d))
     if type(n) == int: #only integer square root (not floating point)        
         if int(n) < 0:
             raise ValueError(F"Negative number: {n}")
@@ -78,7 +78,7 @@ def sqr(n, d = 3):
                 L = I + 1
 
     if type(n) == str:
-        #VALIDAZIONE n
+        #VALIDATION n
         nv = n.split('.')
         if len(nv) != 2 or not (nv[0].isnumeric() and nv[1].isnumeric()):
             raise ValueError(F"Floating number format not valid: {n}")    
@@ -99,7 +99,7 @@ def sqr(n, d = 3):
         if n0 + '.' + n1 == '0.0':
             return '0.0'
 
-        L_rx = len(str(n0))+1 >> 1 #X2Division -root digit length                       
+        L_rx = len(str(n0))+1 >> 1 #X2Division - root digit length                       
         L_n1 = len(n1) #floating digit number 
         
         if n0 == '0': # 0 < n < 1
@@ -129,4 +129,3 @@ def sqr(n, d = 3):
         raise ValueError(F"'float', type not valid: {n}")
     else:
         raise ValueError(F"Type not valid: {n}")
-    
